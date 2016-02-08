@@ -12,36 +12,34 @@ rvm:
   #- jruby-head
   #- ruby-head
   #- ree
-env:  
-  global:
-    - FOO=FUBU
+#env:  
+ # global:
+  #  - FOO=FUBU
 
-  matrix:
-    - M1=ONE
+  #matrix:
+   # - M1=ONE
 
-build:
-  pre_ci:
-    - docker build -t=shippabledocker/hitchcock4_sample_ruby .
+#build:
+ # pre_ci:
+  #  - docker build -t=shippabledocker/hitchcock4_sample_ruby .
 
-  pre_ci_boot:
-    image_name: shippabledocker/hitchcock4_sample_ruby
-    image_tag: latest
-    pull: false
-    options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
+  #pre_ci_boot:
+   # image_name: shippabledocker/hitchcock4_sample_ruby
+    #image_tag: latest
+    #pull: false
+    #options: '--privileged=true --net=bridge -e FOO=true -e BOO=false'
 
   ci:
     - ps -eax
     - ls -al
 
-  post_ci:
-    - docker push shippabledocker/hitchcock4_sample_ruby
+  #post_ci:
+   # - docker push shippabledocker/hitchcock4_sample_ruby
 
 integrations:
   hub:
     - integrationName: ship-docker
       type: docker
-      branches:
-        only:
-          - master   
+     
 
 
